@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: eciprateekmavendemo 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eciprateekmavendemo
+  template:
+    metadata:
+      labels:
+        app: eciprateekmavendemo 
+    spec:
+      containers:
+        - name: eciprateekmavendemo 
+          image: akstestingdapr.azurecr.io/eciprateekmavendemo
+          ports:
+          - containerPort: 8080
