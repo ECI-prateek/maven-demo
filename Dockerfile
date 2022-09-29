@@ -10,7 +10,8 @@ RUN mvn -f /home/app/pom.xml clean install
 # Package stage
 #
 FROM openjdk:11-jre-slim
-RUN cd /home/app/target
+COPY  --from=build /home/app/target/ /usr/local/lib/
+RUN cd /usr/local/lib/
 RUN ls
 COPY --from=build /home/app/target/maven-demo.jar /usr/local/lib/demo.jar
 EXPOSE 8080
